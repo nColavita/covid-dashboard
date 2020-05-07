@@ -1,38 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 .App {
-  text-align: center;
+    background: #f1f1f1;
+    padding: 25px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.infected {
+    background: linear-gradient(0deg, #fff23e 0%, #fff78d 15%, #ffffff 40%);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.recovered {
+    background: linear-gradient(0deg, #72f041 0%, #b7ff8d 15%, #ffffff 40%);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dead {
+    background: linear-gradient(0deg, #ff3e3e 0%, #ff9e8d 15%, #ffffff 40%);
 }

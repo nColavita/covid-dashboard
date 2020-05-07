@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
+import { fetchCardData } from './api';
+
+import GlobalChart from './components/GlobalChart';
+import Cards from './components/Cards';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+        data: {},
+    };
+
+    async componentDidMount() {
+        const fetchedCardData = await fetchCardData();
+        this.setState({ data: fetchedCardData });
+
+        console.log(this.state.data);
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <h1>Covid 19 Dashboard</h1>
+                <Cards data={this.state.data} />
+                <GlobalChart />
+            </div>
+        );
+    }
 }
 
 export default App;
