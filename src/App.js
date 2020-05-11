@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Container, Grid, Typography, Card } from '@material-ui/core';
 
 import { fetchCardData } from './api';
 
-import InfectedChart from './components/InfectedChart';
-import DeathChart from './components/DeathChart';
 import Cards from './components/Cards';
+import DeathChart from './components/DeathChart';
+import InfectedChart from './components/InfectedChart';
 
 import './App.css';
 
@@ -20,8 +20,12 @@ class App extends Component {
     }
 
     render() {
+        const dateFormatted = new Date(
+            this.state.data.lastUpdate
+        ).toDateString();
+
         return (
-            <div className="App">
+            <Container className="App">
                 <div className="headline">
                     <Typography color="textPrimary" variant="h2">
                         Covid-19
@@ -29,22 +33,19 @@ class App extends Component {
                     <Typography color="textPrimary" variant="h5">
                         Global Watch
                     </Typography>
+                    <Typography color="textPrimary" paragraph="true">
+                        As of {dateFormatted}
+                    </Typography>
                     <Typography color="textSecondary">
                         Johns Hopkins University
                     </Typography>
                 </div>
-                <Grid
-                    container
-                    justify="center"
-                    style={{ marginBottom: '50px', marginTop: '50px' }}
-                >
+                <Grid container>
                     <Cards data={this.state.data} />
-                </Grid>
-                <Grid container justify="center">
                     <InfectedChart />
                     <DeathChart />
                 </Grid>
-            </div>
+            </Container>
         );
     }
 }

@@ -14,7 +14,7 @@ const InfectedChart = () => {
         fetchAPI();
     }, []);
 
-    const globalChart = globalData.length ? (
+    const infectedChart = globalData.length ? (
         <Line
             options={{
                 scales: {
@@ -26,6 +26,10 @@ const InfectedChart = () => {
                         },
                     ],
                 },
+                title: {
+                    display: true,
+                    text: 'Infected',
+                },
             }}
             data={{
                 //destructure date from globalData
@@ -35,16 +39,16 @@ const InfectedChart = () => {
                         data: globalData.map(
                             ({ confirmedChina }) => confirmedChina
                         ),
-                        label: 'Infected - China',
-                        borderColor: '#39DCD2',
+                        label: 'China',
+                        borderColor: '#fff23e',
                         fill: false,
                     },
                     {
                         data: globalData.map(
                             ({ confirmedOutside }) => confirmedOutside
                         ),
-                        label: 'Infected - Outside China',
-                        borderColor: '#3981DC',
+                        label: 'Outside China',
+                        borderColor: '#cac360',
                         fill: false,
                     },
                 ],
@@ -53,8 +57,8 @@ const InfectedChart = () => {
     ) : null;
 
     return (
-        <Grid item component={Card} xs={12} md={5}>
-            <div>{globalChart}</div>
+        <Grid item xs={12} md={5}>
+            {infectedChart}
         </Grid>
     );
 };

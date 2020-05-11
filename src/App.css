@@ -3,17 +3,21 @@ body {
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-.App {
-    background: #f1f1f1;
-    padding: 25px;
+
+.headline {
+    margin: 50px 0 100px 0;
+}
+
+.MuiGrid-container {
+    justify-content: space-around;
 }
 
 .infected {
-    background: linear-gradient(0deg, #fff23e 0%, #fff78d 15%, #ffffff 40%);
+    background: linear-gradient(0deg, #fff23e 0%, #fff78d 25%, #ffffff 60%);
 }
 .recovered {
-    background: linear-gradient(0deg, #72f041 0%, #b7ff8d 15%, #ffffff 40%);
+    background: linear-gradient(0deg, #72f041 0%, #b7ff8d 25%, #ffffff 60%);
 }
 .dead {
-    background: linear-gradient(0deg, #ff3e3e 0%, #ff9e8d 15%, #ffffff 40%);
+    background: linear-gradient(0deg, #ff3e3e 0%, #ff9e8d 25%, #ffffff 60%);
 }

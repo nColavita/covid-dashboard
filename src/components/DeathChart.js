@@ -14,7 +14,7 @@ const DeathChart = () => {
         fetchAPI();
     }, []);
 
-    const globalChart = globalData.length ? (
+    const deathChart = globalData.length ? (
         <Line
             options={{
                 scales: {
@@ -26,6 +26,10 @@ const DeathChart = () => {
                         },
                     ],
                 },
+                title: {
+                    display: true,
+                    text: 'Deaths',
+                },
             }}
             data={{
                 //destructure date from globalData
@@ -33,7 +37,7 @@ const DeathChart = () => {
                 datasets: [
                     {
                         data: globalData.map(({ deathsChina }) => deathsChina),
-                        label: 'Deaths - China',
+                        label: 'China',
                         borderColor: '#ff3e3e',
                         fill: false,
                     },
@@ -41,8 +45,8 @@ const DeathChart = () => {
                         data: globalData.map(
                             ({ deathsOutside }) => deathsOutside
                         ),
-                        label: 'Deaths - Outside China',
-                        borderColor: '#9e1d1d',
+                        label: 'Outside China',
+                        borderColor: '#c76757',
                         fill: false,
                     },
                 ],
@@ -51,8 +55,8 @@ const DeathChart = () => {
     ) : null;
 
     return (
-        <Grid item component={Card} xs={12} md={5}>
-            <div>{globalChart}</div>
+        <Grid item xs={12} md={5}>
+            {deathChart}
         </Grid>
     );
 };
