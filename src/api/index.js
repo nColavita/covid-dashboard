@@ -17,7 +17,17 @@ export const fetchCardData = async () => {
 export const fetchGlobalData = async () => {
     try {
         const { data } = await axios.get(`${baseURL}/daily`);
-        console.log(data);
+        // console.log(data);
+        // return new object for linechart
+        const modifiedData = data.map((daily) => ({
+            confirmedChina: daily.confirmed.china,
+            confirmedOutside: daily.confirmed.outsideChina,
+            deathsChina: daily.deaths.china,
+            deathsOutside: daily.deaths.outsideChina,
+            date: daily.reportDate.slice(5, 10),
+        }));
+        console.log(modifiedData);
+        return modifiedData;
     } catch (err) {
         console.log(err);
     }

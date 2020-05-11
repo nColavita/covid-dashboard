@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Grid, Typography } from '@material-ui/core';
 
 import { fetchCardData } from './api';
 
-import GlobalChart from './components/GlobalChart';
+import InfectedChart from './components/InfectedChart';
+import DeathChart from './components/DeathChart';
 import Cards from './components/Cards';
 
 import './App.css';
@@ -15,16 +17,33 @@ class App extends Component {
     async componentDidMount() {
         const fetchedCardData = await fetchCardData();
         this.setState({ data: fetchedCardData });
-
-        console.log(this.state.data);
     }
 
     render() {
         return (
             <div className="App">
-                <h1>Covid 19 Dashboard</h1>
-                <Cards data={this.state.data} />
-                <GlobalChart />
+                <div className="headline">
+                    <Typography color="textPrimary" variant="h2">
+                        Covid-19
+                    </Typography>
+                    <Typography color="textPrimary" variant="h5">
+                        Global Watch
+                    </Typography>
+                    <Typography color="textSecondary">
+                        Johns Hopkins University
+                    </Typography>
+                </div>
+                <Grid
+                    container
+                    justify="center"
+                    style={{ marginBottom: '50px', marginTop: '50px' }}
+                >
+                    <Cards data={this.state.data} />
+                </Grid>
+                <Grid container justify="center">
+                    <InfectedChart />
+                    <DeathChart />
+                </Grid>
             </div>
         );
     }
