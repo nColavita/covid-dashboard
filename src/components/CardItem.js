@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 
-const CardItem = ({ cardColor, headline, value, date }) => {
+const CardItem = ({ cardColor, headline, value }) => {
     return (
         <Grid
             item

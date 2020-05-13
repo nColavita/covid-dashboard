@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Card } from '@material-ui/core';
 import { fetchGlobalData } from '../api';
 import { Line } from 'react-chartjs-2';
 
@@ -56,11 +55,7 @@ const InfectedChart = () => {
         />
     ) : null;
 
-    return (
-        <Grid item xs={12} md={5}>
-            {infectedChart}
-        </Grid>
-    );
+    return <div>{infectedChart}</div>;
 };
 
 export default InfectedChart;

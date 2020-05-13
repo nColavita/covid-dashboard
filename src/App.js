@@ -40,11 +40,11 @@ class App extends Component {
                         Johns Hopkins University
                     </Typography>
                 </div>
-                <Grid container>
+                <Grid container xs={12}>
                     <Cards data={this.state.data} />
-                    <InfectedChart />
-                    <DeathChart />
                 </Grid>
+                <InfectedChart />
+                <DeathChart />
             </Container>
         );
     }
