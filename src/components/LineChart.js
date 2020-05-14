@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { fetchGlobalData } from '../api';
+import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-const InfectedChart = () => {
-    const [globalData, setGlobalData] = useState({});
-
-    useEffect(() => {
-        const fetchAPI = async () => {
-            setGlobalData(await fetchGlobalData());
-        };
-
-        fetchAPI();
-    }, []);
-
-    const infectedChart = globalData.length ? (
+const LineChart = ({ globalData, type }) => {
+    const lineChart = globalData.length ? (
         <Line
             options={{
                 scales: {
@@ -27,7 +16,7 @@ const InfectedChart = () => {
                 },
                 title: {
                     display: true,
-                    text: 'Infected',
+                    text: type === 'infected' ? 'Infected' : 'Deaths',
                     fontSize: 22,
                 },
                 legend: {
@@ -40,18 +29,24 @@ const InfectedChart = () => {
                 datasets: [
                     {
                         data: globalData.map(
-                            ({ confirmedChina }) => confirmedChina
+                            type === 'infected'
+                                ? ({ confirmedChina }) => confirmedChina
+                                : ({ deathsChina }) => deathsChina
                         ),
                         label: 'China',
-                        borderColor: '#fff23e',
+                        borderColor:
+                            type === 'infected' ? '#fff23e' : '#ff3e3e',
                         fill: false,
                     },
                     {
                         data: globalData.map(
-                            ({ confirmedOutside }) => confirmedOutside
+                            type === 'infected'
+                                ? ({ confirmedOutside }) => confirmedOutside
+                                : ({ deathsOutside }) => deathsOutside
                         ),
                         label: 'Outside China',
-                        borderColor: '#cac360',
+                        borderColor:
+                            type === 'infected' ? '#cac360' : '#c76757',
                         fill: false,
                     },
                 ],
@@ -59,7 +54,7 @@ const InfectedChart = () => {
         />
     ) : null;
 
-    return <div style={{ width: '48%' }}>{infectedChart}</div>;
+    return <div style={{ width: '48%' }}>{lineChart}</div>;
 };
 
-export default InfectedChart;
+export default LineChart;

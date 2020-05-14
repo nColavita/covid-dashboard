@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import { Container, Grid, Typography, Card } from '@material-ui/core';
 
-import { fetchCardData } from './api';
+import { fetchCardData, fetchGlobalData } from './api';
 
 import Cards from './components/Cards';
-import DeathChart from './components/DeathChart';
-import InfectedChart from './components/InfectedChart';
+import LineChart from './components/LineChart';
+// import DeathChart from './components/DeathChart';
+// import InfectedChart from './components/InfectedChart';
 
 import './App.css';
 
 class App extends Component {
     state = {
         data: {},
+        globalData: {},
     };
 
     async componentDidMount() {
         const fetchedCardData = await fetchCardData();
+        const fetchedGlobalData = await fetchGlobalData();
+
         this.setState({ data: fetchedCardData });
+        this.setState({ globalData: fetchedGlobalData });
     }
 
     render() {
@@ -44,8 +49,14 @@ class App extends Component {
                     <Cards data={this.state.data} />
                 </Grid>
                 <div style={styles.chartContainer}>
-                    <InfectedChart />
-                    <DeathChart />
+                    <LineChart
+                        globalData={this.state.globalData}
+                        type={'infected'}
+                    />
+                    <LineChart
+                        globalData={this.state.globalData}
+                        type={'deaths'}
+                    />
                 </div>
             </Container>
         );
