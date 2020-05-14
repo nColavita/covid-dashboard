@@ -40,14 +40,25 @@ class App extends Component {
                         Johns Hopkins University
                     </Typography>
                 </div>
-                <Grid container xs={12}>
+                <Grid container>
                     <Cards data={this.state.data} />
                 </Grid>
-                <InfectedChart />
-                <DeathChart />
+                <div style={styles.chartContainer}>
+                    <InfectedChart />
+                    <DeathChart />
+                </div>
             </Container>
         );
     }
 }
+
+const styles = {
+    chartContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        margin: '50px 0',
+    },
+};
 
 export default App;

@@ -25,7 +25,7 @@ const Cards = ({ data: { confirmed, deaths, recovered, lastUpdate } }) => {
             />
             <CardItem
                 cardColor="dead"
-                headline="Dead"
+                headline="Deaths"
                 value={valueFormatted(deaths)}
             />
         </React.Fragment>

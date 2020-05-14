@@ -28,6 +28,10 @@ const DeathChart = () => {
                 title: {
                     display: true,
                     text: 'Deaths',
+                    fontSize: 22,
+                },
+                legend: {
+                    position: 'right',
                 },
             }}
             data={{
@@ -53,7 +57,7 @@ const DeathChart = () => {
         />
     ) : null;
 
-    return <div>{deathChart}</div>;
+    return <div style={{ width: '48%' }}>{deathChart}</div>;
 };
 
 export default DeathChart;

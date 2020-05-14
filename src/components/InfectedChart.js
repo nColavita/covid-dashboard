@@ -28,6 +28,10 @@ const InfectedChart = () => {
                 title: {
                     display: true,
                     text: 'Infected',
+                    fontSize: 22,
+                },
+                legend: {
+                    position: 'right',
                 },
             }}
             data={{
@@ -55,7 +59,7 @@ const InfectedChart = () => {
         />
     ) : null;
 
-    return <div>{infectedChart}</div>;
+    return <div style={{ width: '48%' }}>{infectedChart}</div>;
 };
 
 export default InfectedChart;
