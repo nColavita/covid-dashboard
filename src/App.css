@@ -21,3 +21,15 @@ body {
 .dead {
     background: linear-gradient(0deg, #ff3e3e 0%, #ff9e8d 25%, #ffffff 60%);
 }
+
+@media screen and (min-width: 961px) {
+    .line-chart {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .line-chart {
+        width: 100% !important;
+    }
+}

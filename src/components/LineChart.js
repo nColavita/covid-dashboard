@@ -5,6 +5,11 @@ const LineChart = ({ globalData, type }) => {
     const lineChart = globalData.length ? (
         <Line
             options={{
+                elements: {
+                    point: {
+                        radius: 0,
+                    },
+                },
                 scales: {
                     xAxes: [
                         {
@@ -18,6 +23,7 @@ const LineChart = ({ globalData, type }) => {
                     display: true,
                     text: type === 'infected' ? 'Infected' : 'Deaths',
                     fontSize: 22,
+                    fontColor: type === 'infected' ? '#C0C51C' : '#9C1616',
                 },
                 legend: {
                     position: 'right',
@@ -34,8 +40,8 @@ const LineChart = ({ globalData, type }) => {
                                 : ({ deathsChina }) => deathsChina
                         ),
                         label: 'China',
-                        borderColor:
-                            type === 'infected' ? '#fff23e' : '#ff3e3e',
+                        borderWidth: 5,
+                        borderColor: '#53A8BD',
                         fill: false,
                     },
                     {
@@ -45,8 +51,8 @@ const LineChart = ({ globalData, type }) => {
                                 : ({ deathsOutside }) => deathsOutside
                         ),
                         label: 'Outside China',
-                        borderColor:
-                            type === 'infected' ? '#cac360' : '#c76757',
+                        borderWidth: 5,
+                        borderColor: '#5385BD',
                         fill: false,
                     },
                 ],
@@ -54,7 +60,11 @@ const LineChart = ({ globalData, type }) => {
         />
     ) : null;
 
-    return <div style={{ width: '48%' }}>{lineChart}</div>;
+    return (
+        <div className="line-chart" style={{ width: '48%' }}>
+            {lineChart}
+        </div>
+    );
 };
 
 export default LineChart;
